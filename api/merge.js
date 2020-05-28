@@ -3,13 +3,13 @@ const request = require('request')
 exports.handleSubmit = (req, res) => {
   const pullRequest = req.body.pull_request
   if (shouldHandlePullRequestChange(req)) {
-    const result = handlePuRequest(pullRequest)
+    const result = handlePullRequest(pullRequest)
     res.json({ message: result })
   }
   res.json({ message: "Can't handle this pull request" })
 }
 
-const handlePuRequest = (pullRequest) => {
+const handlePullRequest = (pullRequest) => {
   request(pullRequest.diff_url, (error, response, body) => {
     logStatusAndErrors(error, response)
     if (isChangeInContributorsFile(body)) {
@@ -46,8 +46,8 @@ const isChangeInContributorsFile = diff =>
   (diff.match(/Contributors\.md/g) || []).length === 4
 
 const isSingleLineChange = pullRequest =>
-  (pullRequest.additions === 1 || pullRequest.additions === 2 &&
-  pullRequest.additions - pullRequest.deletions === 1 ) &&
+  (pullRequest.additions === 1 || pullRequest.additions === 2) &&
+  pullRequest.additions - pullRequest.deletions === 1  &&
   pullRequest.changed_files === 1
 
 const getPostRequestOptions = (user, url) => ({
@@ -74,3 +74,10 @@ const logStatusAndErrors = (error, response) => {
   console.error('statusCode:', response && response.statusCode) // Print the response status code if a response was received
 }
 
+module.exports = {
+  shouldHandlePullRequestChange,
+  isChangeInContributorsFile,
+  isSingleLineChange,
+  getPostRequestOptions,
+  getMergeMessage
+}
