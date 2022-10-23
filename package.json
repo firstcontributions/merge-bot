@@ -15,9 +15,13 @@
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
+    "shelljs": "^0.8.5",
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@octokit/core": "^3.6.0",
+    "@octokit/rest": "^18.12.0",
+    "node-fetch": "^3.2.4",
     "request": "^2.88.0",
     "sirv-cli": "^0.4.4"
   }
