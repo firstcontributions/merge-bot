@@ -1,0 +1,16 @@
+name: Lighthouse CI with a plugin
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install # install dependencies, that includes Lighthouse plugins
+      - name: Audit URLs with Field Performance Plugin
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://firstcontributions.github.io
+            https://github.com/firstcontributions/first-contributions
+          configPath: 'lighthouserc.json'
+          temporaryPublicStorage: true
