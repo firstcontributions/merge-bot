@@ -1,93 +1,144 @@
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+> Looking for a shareable component template? Visit: https://github.com/sveltejs/component-template
 
 ---
 
-# svelte app
+# Svelte App
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+This is a project template for building applications using [Svelte](https://svelte.dev).
+The template is maintained at: https://github.com/sveltejs/template
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Overview
+
+This template provides a minimal setup for developing, building, and deploying Svelte applications using Rollup.
+
+## Creating a New Project
+
+To create a new project using this template with [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
 npx degit sveltejs/template svelte-app
 cd svelte-app
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+> Ensure that [Node.js](https://nodejs.org) is installed on your system.
 
+---
 
-## Get started
+## Getting Started
 
-Install the dependencies...
+Install project dependencies:
 
 ```bash
 cd svelte-app
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+Open your browser and navigate to: http://localhost:5000
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+You should see your app running. Edit files inside the `src` directory and reload the page to view changes.
 
+---
 
-## Building and running in production mode
+## Development Notes
 
-To create an optimised version of the app:
+By default, the server only accepts requests from `localhost`.
+To allow access from other devices, update the `sirv` command in `package.json`:
+
+```bash
+--host 0.0.0.0
+```
+
+---
+
+## Project Structure
+
+```
+/src        → Application source code  
+/public     → Static assets  
+rollup.config.js → Build configuration  
+package.json → Project dependencies and scripts  
+```
+
+---
+
+## Building for Production
+
+To build an optimized production version:
 
 ```bash
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+To run the production build:
 
+```bash
+npm run start
+```
 
-## Single-page app mode
+This uses [sirv](https://github.com/lukeed/sirv), which is included as a dependency for deployment compatibility.
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+---
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+## Single-Page App (SPA) Mode
+
+By default, `sirv` serves only files in the `public` directory.
+
+For SPA routing support, update the `start` script in `package.json`:
 
 ```js
 "start": "sirv public --single"
 ```
 
+---
 
-## Deploying to the web
+## Deployment
 
-### With [now](https://zeit.co/now)
+### Using Now
 
-Install `now` if you haven't already:
+Install Now:
 
 ```bash
 npm install -g now
 ```
 
-Then, from within your project folder:
+Deploy your app:
 
 ```bash
 cd public
 now deploy --name my-project
 ```
 
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
+---
 
-### With [surge](https://surge.sh/)
+### Using Surge
 
-Install `surge` if you haven't already:
+Install Surge:
 
 ```bash
 npm install -g surge
 ```
 
-Then, from within your project folder:
+Build and deploy:
 
 ```bash
 npm run build
 surge public my-project.surge.sh
 ```
+
+---
+
+## Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Submit a pull request
+
